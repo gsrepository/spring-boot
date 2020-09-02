@@ -1,0 +1,10 @@
+insert into order_items(id,product_code,product_name,quantity,order_id) values('1','p1','product 1', 2,'OD1');
+insert into order_items(id,product_code,product_name,quantity,order_id) values('2','p2','product 2', 1,'OD1');
+insert into order_items(id,product_code,product_name,quantity,order_id) values('3','p3','product 3', 5,'OD1');
+insert into order_items(id,product_code,product_name,quantity,order_id) values('4','p4','product 4', 2,'OD2');
+insert into order_items(id,product_code,product_name,quantity,order_id) values('5','p5','product 5', 1,'OD2');
+
+
+insert into orders(ORDER_ID,CUST_NAME,ORDER_DATE,SHIPPING_ADDRESS,TOTAL) values('OD1','Gopi',sysdate,'03-407 Punggol Drive 823673',3);
+insert into orders(ORDER_ID,CUST_NAME,ORDER_DATE,SHIPPING_ADDRESS,TOTAL) values('OD2','Superstar',sysdate,'03-407 Senkang 823673',2);
+insert into orders(ORDER_ID,CUST_NAME,ORDER_DATE,SHIPPING_ADDRESS,TOTAL) values('OD3','Ironman',sysdate,'03-407 Jurong 823673',1);
