@@ -45,7 +45,9 @@ public class OrderItemService {
 
     public OrderItemData getItemsByOrderId(String orderId){
         OrderItemData orderItemData = new OrderItemData();
-        orderItemData.setOrderItems(this.orderItemRepo.getItemsByOrderId(orderId));
+        List<OrderItem> orderItems = this.orderItemRepo.getItemsByOrderId(orderId);
+        orderItemData.setOrderItems(orderItems);
+        System.out.println("Order Items for the order : "+orderItemData.getOrderItems());
         return orderItemData;
     }
 

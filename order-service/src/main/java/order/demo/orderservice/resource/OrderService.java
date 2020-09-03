@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +19,10 @@ public class OrderService {
     OrderRepo orderRepo;
 
     @Autowired
-    private RestTemplate restTemplate;
+    RestTemplate restTemplate;
+
+    @Autowired
+    FeignClientProxy feignClientProxy;
 
     public List<Order> getAllOrders(){
         return orderRepo.findAll();
@@ -32,9 +36,8 @@ public class OrderService {
     public Order getOrderByOrderId(String orderId){
 
         Order item = orderRepo.findByOrderId(orderId);
-
-        OrderItemData orderItemData = restTemplate.getForObject("http://localhost:8086/items/ordebyid/"+orderId,OrderItemData.class);
-
+        //OrderItemData orderItemData = restTemplate.getForObject("http://localhost:8086/items/ordebyid/"+orderId,OrderItemData.class);
+        OrderItemData orderItemData = feignClientProxy.getItemsByOrderId(orderId);
         item.setOrderItems(orderItemData.getOrderItems());
         return item;
     }
